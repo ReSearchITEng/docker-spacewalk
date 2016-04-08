@@ -9,7 +9,7 @@
 # docker run --privileged=true -d --name="spacewalk" -h "spackewalk" spacewalk
 
 # 1. Base images
-FROM     centos:centos6
+FROM     centos:latest
 MAINTAINER Yongbok Kim <ruo91@yongbok.net>
 
 # 2. Set the environment variable
@@ -17,8 +17,8 @@ WORKDIR /opt
 
 # 3. Add the epel, spacewalk, jpackage repository
 ADD conf/jpackage.repo /etc/yum.repos.d/jpackage.repo
-RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm \
- && rpm -Uvh http://yum.spacewalkproject.org/latest/RHEL/6/x86_64/spacewalk-repo-2.4-3.el6.noarch.rpm
+RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm \
+ && rpm -Uvh http://yum.spacewalkproject.org/latest/RHEL/7/x86_64/spacewalk-repo-2.4-3.el7.noarch.rpm
 
 # 4. Installation a spacewalk
 ADD conf/answer.txt	/opt/answer.txt
