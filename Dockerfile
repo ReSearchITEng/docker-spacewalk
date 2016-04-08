@@ -18,7 +18,7 @@ WORKDIR /opt
 # 3. Add the epel, spacewalk, jpackage repository
 ADD conf/jpackage.repo /etc/yum.repos.d/jpackage.repo
 RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm \
- && rpm -Uvh http://yum.spacewalkproject.org/latest/RHEL/6/x86_64/spacewalk-repo-2.2-1.el6.noarch.rpm
+ && rpm -Uvh http://yum.spacewalkproject.org/latest/RHEL/6/x86_64/spacewalk-repo-2.4-3.el6.noarch.rpm
 
 # 4. Installation a spacewalk
 ADD conf/answer.txt	/opt/answer.txt
@@ -27,7 +27,7 @@ RUN chmod a+x /opt/spacewalk.sh
 RUN yum install -y spacewalk-setup-postgresql spacewalk-postgresql
 
 # 5. Supervisor
-RUN yum install -y python-setuptools && easy_install pip && pip install supervisor && mkdir /etc/supervisord.d
+RUN yum install -y python-setuptools && easy_install pip && pip install supervisor && pip install 'meld3 == 1.0.1' && mkdir /etc/supervisord.d
 ADD conf/supervisord.conf /etc/supervisord.d/supervisord.conf
 
 # 6. Start supervisord
