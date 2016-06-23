@@ -17,7 +17,7 @@ WORKDIR /opt
 
 # 3. Add the epel, spacewalk, jpackage repository
 ADD conf/jpackage.repo /etc/yum.repos.d/jpackage.repo
-RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm \
+RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-7.noarch.rpm \
  && rpm -Uvh http://yum.spacewalkproject.org/latest/RHEL/7/x86_64/spacewalk-repo-2.4-3.el7.noarch.rpm
 
 # 4. Installation a spacewalk
